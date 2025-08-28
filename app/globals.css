@@ -1,0 +1,186 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  /* Dark Gym Theme - Primary Colors */
+  --background: #0f172a; /* Dark navy background */
+  --foreground: #f3f4f6; /* Light grey for text */
+  --card: #1e293b; /* Charcoal for card backgrounds */
+  --card-foreground: #f3f4f6; /* Light text on cards */
+  --popover: #1e293b; /* Charcoal for popovers */
+  --popover-foreground: #f3f4f6; /* Light text on popovers */
+  --primary: #06b6d4; /* Cyan for primary actions */
+  --primary-foreground: #ffffff; /* White text on primary buttons */
+  --secondary: #22c55e; /* Neon green for secondary actions */
+  --secondary-foreground: #ffffff; /* White text on secondary buttons */
+  --muted: #374151; /* Darker muted backgrounds */
+  --muted-foreground: #9ca3af; /* Muted text color */
+  --accent: #06b6d4; /* Accent color for highlights */
+  --accent-foreground: #ffffff; /* White text on accents */
+  --destructive: #dc2626; /* Red for destructive actions */
+  --destructive-foreground: #ffffff; /* White text on destructive buttons */
+  --border: #374151; /* Dark border color */
+  --input: #1e293b; /* Input background */
+  --ring: #06b6d4; /* Ring color for focus states */
+  --chart-1: #22c55e; /* Neon green for charts */
+  --chart-2: #06b6d4; /* Cyan for charts */
+  --chart-3: #dc2626; /* Red for charts */
+  --chart-4: #f97316; /* Orange for charts */
+  --chart-5: #f59e0b; /* Yellow for charts */
+  --radius: 0.5rem; /* Rounded corners for a modern look */
+  --sidebar: #1e293b; /* Sidebar background */
+  --sidebar-foreground: #f3f4f6; /* Sidebar text */
+  --sidebar-primary: #06b6d4; /* Primary sidebar accent */
+  --sidebar-primary-foreground: #ffffff; /* Text on primary sidebar elements */
+  --sidebar-accent: #22c55e; /* Secondary sidebar accent */
+  --sidebar-accent-foreground: #ffffff; /* Text on secondary sidebar elements */
+  --sidebar-border: #374151; /* Border for sidebar */
+  --sidebar-ring: #06b6d4; /* Ring color for sidebar focus */
+}
+
+.dark {
+  /* Keep same values for dark mode consistency */
+  --background: #0f172a;
+  --foreground: #f3f4f6;
+  --card: #1e293b;
+  --card-foreground: #f3f4f6;
+  --popover: #1e293b;
+  --popover-foreground: #f3f4f6;
+  --primary: #06b6d4;
+  --primary-foreground: #ffffff;
+  --secondary: #22c55e;
+  --secondary-foreground: #ffffff;
+  --muted: #374151;
+  --muted-foreground: #9ca3af;
+  --accent: #06b6d4;
+  --accent-foreground: #ffffff;
+  --destructive: #dc2626;
+  --destructive-foreground: #ffffff;
+  --border: #374151;
+  --input: #1e293b;
+  --ring: #06b6d4;
+  --chart-1: #22c55e;
+  --chart-2: #06b6d4;
+  --chart-3: #dc2626;
+  --chart-4: #f97316;
+  --chart-5: #f59e0b;
+  --sidebar: #1e293b;
+  --sidebar-foreground: #f3f4f6;
+  --sidebar-primary: #06b6d4;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #22c55e;
+  --sidebar-accent-foreground: #ffffff;
+  --sidebar-border: #374151;
+  --sidebar-ring: #06b6d4;
+}
+
+@theme inline {
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* Custom animations for gym theme */
+@keyframes neon-pulse {
+  0%,
+  100% {
+    box-shadow: 0 0 5px #06b6d4, 0 0 10px #06b6d4, 0 0 15px #06b6d4;
+  }
+  50% {
+    box-shadow: 0 0 10px #06b6d4, 0 0 20px #06b6d4, 0 0 30px #06b6d4;
+  }
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes slide-in-left {
+  0% {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slide-in-right {
+  0% {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.neon-pulse {
+  animation: neon-pulse 2s ease-in-out infinite;
+}
+
+.float-animation {
+  animation: float 3s ease-in-out infinite;
+}
+
+.slide-in-left {
+  animation: slide-in-left 0.8s ease-out;
+}
+
+.slide-in-right {
+  animation: slide-in-right 0.8s ease-out;
+}
