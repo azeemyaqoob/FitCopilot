@@ -1,6 +1,5 @@
-import { clerkMiddleware, createRouteMatcher } from "@clerk/nextjs/server";
+import { clerkMiddleware, createRouteMatcher } from '@clerk/nextjs/server'
 
-// Create a route matcher for all public routes
 const isPublicRoute = createRouteMatcher([
   "/",
   "/contact",
@@ -14,19 +13,25 @@ const isPublicRoute = createRouteMatcher([
   "/services/strength-training",
   "/services/zumba",
   "/api/contact",
-  "/sign-in(.*)", // The sign-in page and all its sub-routes are public
-  "/sign-up(.*)", // The sign-up page and all its sub-routes are public
-]);
+    "/sign-in(.*)", // The sign-in page and all its sub-routes are public
+  "/sign-up(.*)", 
+])
 
-export default clerkMiddleware((auth, req) => {
-  // If the route is not public, then it is protected
-  if (!isPublicRoute(req)) {
-    auth.protect();
+export default clerkMiddleware((auth, request) => {
+  if (isPublicRoute(request)) {
+    // This is a public route, so we do nothing.
+    return
   }
-});
+
+  // For all other routes, protect them.
+  // If the user is not signed in, they will be redirected to the sign-in page.
+  auth.protect()
+})
 
 export const config = {
-  // The following matcher runs middleware on all routes
-  // except static assets.
-  matcher: ["/((?!.+\\.[\\w]+$|_next).*)", "/", "/(api|trpc)(.*)"],
-};
+  matcher: [
+    '/((?!.*\\..*|_next).*)',
+    '/',
+    '/(api|trpc)(.*)',
+  ],
+}
