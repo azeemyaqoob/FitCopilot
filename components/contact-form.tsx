@@ -61,19 +61,19 @@ export function ContactForm({ serviceType, title = "Contact Us", description }: 
 
   if (isSubmitted) {
     return (
-      <Card className="border-0 shadow-xl">
+      <Card className="border-border bg-card">
         <CardHeader className="text-center">
-          <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-            <CheckCircle className="h-8 w-8 text-green-600" />
+          <div className="w-16 h-16 bg-primary/20 rounded-full flex items-center justify-center mx-auto mb-4">
+            <CheckCircle className="h-8 w-8 text-primary" />
           </div>
-          <CardTitle className="text-2xl">Thank You!</CardTitle>
-          <CardDescription>Your message has been sent successfully</CardDescription>
+          <CardTitle className="text-2xl text-foreground">Thank You!</CardTitle>
+          <CardDescription className="text-muted-foreground">Your message has been sent successfully</CardDescription>
         </CardHeader>
         <CardContent className="text-center space-y-4">
-          <p className="text-sm text-gray-600">We've received your inquiry and will get back to you within 24 hours.</p>
+          <p className="text-sm text-muted-foreground">We've received your inquiry and will get back to you within 24 hours.</p>
           <Button
             variant="outline"
-            className="w-full bg-transparent"
+            className="w-full"
             onClick={() => {
               setIsSubmitted(false)
               setFormData({ name: "", email: "", phone: "", serviceType: serviceType || "", message: "" })
@@ -87,7 +87,7 @@ export function ContactForm({ serviceType, title = "Contact Us", description }: 
   }
 
   return (
-    <Card className="border-0 shadow-xl">
+    <Card className="border-border bg-card">
       <CardHeader>
         <CardTitle className="text-2xl">{title}</CardTitle>
         {description && <CardDescription>{description}</CardDescription>}
@@ -158,7 +158,7 @@ export function ContactForm({ serviceType, title = "Contact Us", description }: 
             />
           </div>
 
-          {error && <div className="text-sm text-red-600 bg-red-50 p-3 rounded-md">{error}</div>}
+          {error && <div className="text-sm text-destructive bg-destructive/10 p-3 rounded-md">{error}</div>}
 
           <Button type="submit" className="w-full" disabled={isLoading}>
             {isLoading ? "Sending..." : "Send Message"}

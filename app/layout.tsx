@@ -2,6 +2,7 @@ import type React from "react"
 import type { Metadata } from "next"
 import { GeistSans } from "geist/font/sans"
 import { GeistMono } from "geist/font/mono"
+import { Footer } from "@/components/footer"
 import "./globals.css"
 
 export const metadata: Metadata = {
@@ -17,7 +18,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`font-sans ${GeistSans.variable} ${GeistMono.variable}`}>{children}</body>
+      <body className={`font-sans ${GeistSans.variable} ${GeistMono.variable}`}>
+        <div className="flex flex-col min-h-screen">
+          <main className="flex-grow">{children}</main>
+          <Footer />
+        </div>
+      </body>
     </html>
   )
 }
